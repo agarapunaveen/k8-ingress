@@ -2,20 +2,16 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app1
-  # these lables belongs to replicaset resources
   labels:
     app: app1
     purpose: ingress
-    # how many replicas required
 spec:
   selector:
     matchLabels:
       app: app1
       purpose: ingress
-# pod definition
   template:
     metadata:
-    # selector labels must match below labels
       labels:
         app: app1
         purpose: ingress
@@ -46,7 +42,7 @@ metadata:
    alb.ingress.kubernetes.io/scheme: internet-facing
    alb.ingress.kubernetes.io/target-type: ip
    alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
-   alb.ingress.kubernetes.io/security-groups: joindevops
+   alb.ingress.kubernetes.io/group.name: joindevops
 spec:
   ingressClassName: alb
   rules:
