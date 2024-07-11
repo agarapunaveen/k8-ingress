@@ -44,6 +44,7 @@ metadata:
   name: ingress-wildcard-host
   annotations:
    alb.ingress.kubernetes.io/scheme: internet-facing
+   kubernents.io/ingress.class: alb
    alb.ingress.kubernetes.io/target-type: ip
    alb.ingress.kubernetes.io/security-groups: joindevops
 spec:
