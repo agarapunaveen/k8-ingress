@@ -42,6 +42,10 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-wildcard-host
+  annotations:
+   alb.ingress.kubernetes.io/scheme: internet-facing
+   alb.ingress.kubernetes.io/target-type: ip
+   alb.ingress.kubernetes.io/security-groups: joindevops
 spec:
   rules:
   - host: "app1.naveencloud.online"
