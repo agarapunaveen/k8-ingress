@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app1
+  # these lables belongs to replicaset resources
+  labels:
+    app: app1
+    purpose: ingress
+    # how many replicas required
+spec:
+  selector:
+    matchLabels:
+      app: app1
+      purpose: ingress
+# pod definition
+  template:
+    metadata:
+    # selector labels must match below labels
+      labels:
+        app: app1
+        purpose: ingress
+    spec:
+      containers:
+      - name: nginx
+        image: joindevops/app1:1.0
+---
+kind: Service
+apiVersion: v1
+metadata:
+ name: my-service
+spec:
+ selector:
+  app: app1
+  purpose: ingress
+ ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80 
+
+
